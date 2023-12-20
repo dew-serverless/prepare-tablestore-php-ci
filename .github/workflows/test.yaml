@@ -1,0 +1,31 @@
+name: Test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Initialize Terraform
+        run: terraform init
+
+      - name: Prepare PGP Key
+        env:
+          PGP_KEY_BASE64: ${{ secrets.PGP_KEY_BASE64 }}
+        run: echo $PGP_KEY_BASE64 | base64 --decode > public.gpg
+
+      - name: Run Test
+        run: terraform test -var="pgp_key=public.gpg"
+        env:
+          ALICLOUD_ACCESS_KEY: ${{ secrets.ALICLOUD_ACCESS_KEY }}
+          ALICLOUD_SECRET_KEY: ${{ secrets.ALICLOUD_SECRET_KEY }}
+          ALICLOUD_REGION: ${{ secrets.ALICLOUD_REGION }}
