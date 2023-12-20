@@ -15,6 +15,9 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
+      - name: Initialize Terraform
+        run: terraform init
+
       - name: Prepare PGP Key
         env:
           PGP_KEY_BASE64: ${{ secrets.PGP_KEY_BASE64 }}
