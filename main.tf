@@ -1,5 +1,5 @@
-provider "alicloud" {
-  region = var.region
+data "alicloud_regions" "this" {
+  current = true
 }
 
 data "local_file" "pgp_key" {
@@ -58,16 +58,16 @@ resource "alicloud_ram_policy" "this" {
         Action = "ots:*",
         Effect = "Allow",
         Resource = [
-          "acs:ots:${var.region}:*:instance/test*",
-          "acs:ots:${var.region}:*:instance/${alicloud_ots_instance.this.id}",
-          "acs:ots:${var.region}:*:instance/${alicloud_ots_instance.this.id}/table*"
+          "acs:ots:${data.alicloud_regions.this.ids.0}:*:instance/test*",
+          "acs:ots:${data.alicloud_regions.this.ids.0}:*:instance/${alicloud_ots_instance.this.id}",
+          "acs:ots:${data.alicloud_regions.this.ids.0}:*:instance/${alicloud_ots_instance.this.id}/table*"
         ]
       },
       {
         Action = "ots:ListInstance",
         Effect = "Allow",
         Resource = [
-          "acs:ots:${var.region}:*:instance/*"
+          "acs:ots:${data.alicloud_regions.this.ids.0}:*:instance/*"
         ]
       }
     ]

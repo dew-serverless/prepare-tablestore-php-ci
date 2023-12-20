@@ -1,8 +1,3 @@
-variable "region" {
-  type        = string
-  description = "The ACS region the Tablestore instance created in."
-}
-
 variable "tags" {
   type        = map(string)
   description = "The default tags attached to every resources."
