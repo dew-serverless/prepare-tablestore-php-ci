@@ -1,14 +1,3 @@
-variable "access_key" {
-  type        = string
-  description = "The ACS access key ID."
-}
-
-variable "secret_key" {
-  type        = string
-  description = "The ACS access key secret."
-  sensitive   = true
-}
-
 variable "region" {
   type        = string
   description = "The ACS region the Tablestore instance created in."
