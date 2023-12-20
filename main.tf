@@ -49,30 +49,29 @@ resource "alicloud_ram_access_key" "this" {
 }
 
 resource "alicloud_ram_policy" "this" {
-  policy_name     = var.policy_name != null ? var.policy_name : "${alicloud_ram_user.this.name}-policy"
-  policy_document = <<EOF
-  {
-    "Version": "1",
-    "Statement": [
+  policy_name = var.policy_name != null ? var.policy_name : "${alicloud_ram_user.this.name}-policy"
+
+  policy_document = jsonencode({
+    Version = "1"
+    Statement = [
       {
-        "Action": "ots:*",
-        "Resource": [
+        Action = "ots:*",
+        Effect = "Allow",
+        Resource = [
           "acs:ots:${var.region}:*:instance/test*",
           "acs:ots:${var.region}:*:instance/${alicloud_ots_instance.this.id}",
           "acs:ots:${var.region}:*:instance/${alicloud_ots_instance.this.id}/table*"
-        ],
-        "Effect": "Allow"
+        ]
       },
       {
-        "Action": "ots:ListInstance",
-        "Resource": [
+        Action = "ots:ListInstance",
+        Effect = "Allow",
+        Resource = [
           "acs:ots:${var.region}:*:instance/*"
-        ],
-        "Effect": "Allow"
+        ]
       }
     ]
-  }
-  EOF
+  })
 
   rotate_strategy = "DeleteOldestNonDefaultVersionWhenLimitExceeded"
 }
