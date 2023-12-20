@@ -1,3 +1,8 @@
+output "ots_instance_endpoint" {
+  value       = "https://${alicloud_ots_instance.this.id}.${data.alicloud_regions.this.ids.0}.ots.aliyuncs.com"
+  description = "The Tablestore instance public endpoint."
+}
+
 output "ots_instance_id" {
   value       = alicloud_ots_instance.this.id
   description = "The Tablestore instance name."
