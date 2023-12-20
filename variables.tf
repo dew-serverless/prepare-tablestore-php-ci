@@ -66,7 +66,12 @@ variable "user_comments" {
 
 variable "pgp_key" {
   type        = string
-  description = "The PGP public key used to encrypt the ACS access key secret."
+  description = "The path of PGP public key used to encrypt the ACS access key secret."
+
+  validation {
+    condition     = fileexists(var.pgp_key)
+    error_message = "The PGP key does not exists."
+  }
 }
 
 variable "policy_name" {

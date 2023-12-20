@@ -1,0 +1,16 @@
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Ignore all .tfvars files except the example one
+*.tfvars
+!example.tfvars
+
+# Crash log files
+crash.log
+
+# Ignore the PGP keys to encrypt ACS access key secret
+*.gpg
