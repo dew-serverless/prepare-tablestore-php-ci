@@ -39,7 +39,7 @@ resource "alicloud_ots_table" "rows" {
 
 resource "alicloud_ram_user" "this" {
   name     = var.user_name != null ? var.user_name : "ci-${var.package_name}"
-  comments = var.user_comment != null ? var.user_comment : "User acting in CI for package ${var.package_name}."
+  comments = var.user_comments != null ? var.user_comments : "User acting in CI for package ${var.package_name}."
 }
 
 resource "alicloud_ram_access_key" "this" {

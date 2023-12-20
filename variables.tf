@@ -57,7 +57,7 @@ variable "user_name" {
   default     = null
 }
 
-variable "user_comment" {
+variable "user_comments" {
   type        = string
   description = "The description of the RAM user."
   nullable    = true
