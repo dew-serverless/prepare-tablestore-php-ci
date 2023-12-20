@@ -1,6 +1,8 @@
 # Prepare Tablestore PHP CI
 
 [![Test](https://github.com/dew-serverless/prepare-tablestore-php-ci/actions/workflows/test.yaml/badge.svg)](https://github.com/dew-serverless/prepare-tablestore-php-ci/actions/workflows/test.yaml)
+[![MIT License](https://img.shields.io/github/license/dew-serverless/prepare-tablestore-php-ci)](https://github.com/dew-serverless/prepare-tablestore-php-ci)
+[![Latest Version](https://img.shields.io/github/v/release/dew-serverless/prepare-tablestore-php-ci)](https://github.com/dew-serverless/prepare-tablestore-php-ci)
 
 The module helps you quickly issue API credentials and create a testing
 Tablestore instance that you could use for the integration tests in the
