@@ -1,11 +1,3 @@
-variable "tags" {
-  type        = map(string)
-  description = "The default tags attached to every resources."
-  default = {
-    "Terraform" = "true"
-  }
-}
-
 variable "package_name" {
   type        = string
   description = "The package name."

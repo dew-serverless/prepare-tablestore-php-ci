@@ -19,7 +19,6 @@ resource "random_string" "instance_name" {
 resource "alicloud_ots_instance" "this" {
   name        = var.instance_name != null ? var.instance_name : random_string.instance_name.id
   description = var.instance_description != null ? var.instance_description : "Testing instance for package ${var.package_name}."
-  tags        = var.tags
 }
 
 resource "alicloud_ots_table" "rows" {
