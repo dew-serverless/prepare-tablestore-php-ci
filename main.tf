@@ -8,6 +8,7 @@ data "local_file" "pgp_key" {
 
 resource "random_string" "instance_name" {
   length  = 16
+  numeric = false
   special = false
 }
 
